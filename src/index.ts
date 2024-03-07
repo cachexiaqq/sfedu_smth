@@ -23,7 +23,12 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     nameCompany: {
-        type: String
+        type: String,
+        required: true
+    },
+    position:{
+        type: String,
+        required: true
     },
     phoneNumber: {
         type: Number,
@@ -54,6 +59,7 @@ app.post('/feedback', (req, res) =>{
             email: req.body.email,
             name: req.body.name,
             nameCompany: req.body.nameCompany,
+            position: req.body.position,
             phoneNumber: req.body.phoneNumber,
             questions: req.body.questions,
             legalEntity: req.body.legalEntity
@@ -63,7 +69,7 @@ app.post('/feedback', (req, res) =>{
     } catch (err) {
         console.log(err);
         res.status(500).json({
-          message: "Не удалось создать пользователя",
+          message: "Не удалось внести пользователя",
         });
     }
 })
